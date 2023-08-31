@@ -106,13 +106,17 @@ for material, lanterns in lantern_groups.items():
     modified_layouts.append(chain_layout)
 
     for lantern_name in lanterns:
-        # Extract the color and lantern type from the lantern name
-        color, lantern_type = lantern_name.split("_", 1)
-        
         lantern_layout = static_layout_lantern.copy()
         lantern_layout["blockID"] = f"{lantern_name}"
-        lantern_layout["Can link"] = f"additionallanterns:{chain_name}"
         modified_layouts.append(lantern_layout)
+        
+        # Create layouts for all possible combinations of lanterns and chains
+        for other_material, other_lanterns in lantern_groups.items():
+            other_chain_name = lantern_to_chain_mapping[other_material]
+            lantern_layout_combination = static_layout_lantern.copy()
+            lantern_layout_combination["blockID"] = f"{lantern_name}"
+            lantern_layout_combination["Can link"] = f"additionallanterns:{other_chain_name}"
+            modified_layouts.append(lantern_layout_combination)
 
 with open(output_file_path, "w") as output_file:
     for layout in modified_layouts:

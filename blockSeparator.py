@@ -1,6 +1,6 @@
 import os
 
-input_folder = "C:/Users/drxmi/Desktop/AdditionalLanterns-fabric-1.20/src/generated/resources/assets/additionallanterns/models/block"  # Replace with the path to your folder containing the JSON files
+input_folder = "AdditionalLanterns-fabric-1.20/src/generated/resources/assets/additionallanterns/models/block"  # Replace with the path to your folder containing the JSON files
 
 chain_names = []
 lantern_names = []
